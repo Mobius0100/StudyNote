@@ -18,7 +18,7 @@
 1. 配置username和email\
 `git config --global user.name "your name"`\
 `git config --global user.email "your_email@youremail.com"`
-
+asd
 2. 网页端创建仓库
    
 3. 创建本地仓库\
