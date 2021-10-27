@@ -38,6 +38,9 @@
 ## 更新与合并
 `git pull`
 
+## 创建转换分支
+`git checkout -b brancename`
+
 ## 替换本地改动
 假如你操作失误（当然，这最好永远不要发生），你可以使用如下命令替换掉本地改动:\
 `git checkout -- filename`
