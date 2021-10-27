@@ -18,16 +18,16 @@
 1. 配置username和email\
 `git config --global user.name "your name"`\
 `git config --global user.email "your_email@youremail.com"`
-asd
-2. 网页端创建仓库
+
+1. 网页端创建仓库
    
-3. 创建本地仓库\
+2. 创建本地仓库\
    `git init`\
    添加远程地址\
    `git remote add origin git@github.com:yourName/yourRepo.git`
    删除远程地址\
    `git remote rm origin`
-4. 或者克隆远程仓库\
+3. 或者克隆远程仓库\
    `git clone http://gitlab.cvhnu.tech/zouzhuo/ai-box`
 
 ## 添加文件并上传
@@ -39,7 +39,9 @@ asd
 `git pull`
 
 ## 创建转换分支
-`git checkout -b brancename`
+`git checkout -b branchname` 
+`git checkout branchname` 
+`git merge branchname`
 
 ## 替换本地改动
 假如你操作失误（当然，这最好永远不要发生），你可以使用如下命令替换掉本地改动:\
