@@ -48,3 +48,4 @@
 `git reset --hard origin/master`
 
 ## macos 配置
+同windows ，先生成key，再配置github
