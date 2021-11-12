@@ -40,7 +40,7 @@
 
 ## 创建转换分支
 `git checkout -b branchname` 
-`git checkout branchname` 
+`git checkout branchname`    切换分支
 `git merge branchname`
 
 ## 替换本地改动
