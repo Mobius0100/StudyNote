@@ -47,5 +47,11 @@
 `git fetch origin`\
 `git reset --hard origin/master`
 
-## macos 配置
-同windows ，先生成key，再配置github
+## 找回因失误导致本地文件丢失
+
+```bash
+git reflog
+git reset --hard HEAD@{x}
+```
+
+在记录中找到失误的那次操作之前的记录，一般为commit，将x改为head后的数字
