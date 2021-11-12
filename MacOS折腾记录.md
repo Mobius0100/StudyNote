@@ -72,5 +72,6 @@ mosquitto -c /etc/mosquitto/mosquitto.conf -d   #以特定配置文件启动，-
 ## 开启双拼自然码
 
 ```bash
+defaults write com.apple.inputmethod.CoreChineseEngineFramework shuangpinLayout 5
 ```
 
