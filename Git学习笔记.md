@@ -38,7 +38,9 @@
 ## 修改
 `git pull` 拉取远程仓库
 
-`git branch -d name` 删除分支
+`git branch -d name` 删除本地分支     -D强制删除
+
+`git push origin -d name` 删除远程分支
 
 
 
