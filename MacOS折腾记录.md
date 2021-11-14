@@ -69,3 +69,9 @@ mosquitto -c /etc/mosquitto/mosquitto.conf -d   #以特定配置文件启动，-
 
 `mosquitto_pub -h localhost -t "test/abc" -u lilei -P 123456 -i "client3" -m "How are you?"`
 
+## 开启双拼自然码
+
+```bash
+defaults write com.apple.inputmethod.CoreChineseEngineFramework shuangpinLayout 5
+```
+
