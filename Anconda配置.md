@@ -18,6 +18,8 @@
 
 退出环境：`deactivate name`
 
+删除环境：`conda remove -n your_env_name(虚拟环境名称) --all`
+
 环境信息：`conda info --env`
 
 显示配置：`conda config --show channels`

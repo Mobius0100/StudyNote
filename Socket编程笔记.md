@@ -45,3 +45,13 @@
 
 ## 使用settimeout设置超时异常
 
+```python
+socketname.settimeout(time/s)
+
+try:
+    catch timeout error
+except:
+    process
+        
+```
+
