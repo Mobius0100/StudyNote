@@ -37,7 +37,6 @@
 # 卸载现有的 cmake
 sudo apt remove --purge cmake
 
-
 # 使用 Kitware 提供的预编译安装脚本来安装较新版本的 cmake
 # 工作目录及临时变量准备
 export cmake_latest=$(curl -s https://github.com/Kitware/CMake/releases/latest | grep -oE "\/tag\/v([[:digit:]]|\.)+" | grep -oE "([[:digit:]]|\.)+") && \
@@ -70,7 +69,6 @@ cd cmake-3.14.4
 # 未指定prefix会报错Could not find CMAKE_ROOT
 ./bootstrap --prefix=/usr
 
-
 make
 sudo make install
 
@@ -96,5 +94,28 @@ make check
 make install
 
 protoc --version
+```
+
+
+
+## Jetson常用组件路径
+
+/usr/src
+
+/usr/local
+
+
+
+## Jetson增加Swap
+
+```bash
+# 开启硬件性能模式
+sudo nvpmodel -m 0 && sudo jetson_clocks
+# 增加 DDR 可用空间，Xavier 默认内存为 16 GB，所以内存足够，如在 Nano 上尝试，请执行如下操作。
+sudo fallocate -l 5G /var/swapfile
+sudo chmod 600 /var/swapfile
+sudo mkswap /var/swapfile
+sudo swapon /var/swapfile
+sudo bash -c 'echo "/var/swapfile swap swap defaults 0 0" >> /etc/fstab'
 ```
 
