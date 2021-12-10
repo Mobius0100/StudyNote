@@ -119,3 +119,113 @@ sudo swapon /var/swapfile
 sudo bash -c 'echo "/var/swapfile swap swap defaults 0 0" >> /etc/fstab'
 ```
 
+
+
+## SIM7600X 4G模块记录
+
+### 硬件配置
+
+\1. 串口拨码开关拨到U_TX,U_RX一侧,PWR跳冒连接D6（如果需要上电自动开机，PWR跳线帽接5V）
+\2. 将4G模块接入Jetson Nano,再接入主天线,GNSS天线
+\3. 上电开机,登录Jetson Nano,[登录教程点击查看](https://www.waveshare.net/study/portal.php?mod=view&aid=894).
+
+
+
+### 软件配置
+
+```bash
+sudo apt-get install pyserial
+wget -P ~/Documents/SIM7600X_4G_for_JETSON_NANO/ https://www.waveshare.net/w/upload/6/64/SIM7600X_4G_for_JETSON_NANO.tar.gz
+cd ~/Documents/SIM7600X_4G_for_JETSON_NANO/
+tar -xvf SIM7600X_4G_for_JETSON_NANO.tar.gz
+sudo pip3 install Jetson.GPIO
+wget -P ~/Documents/SIM7600X_4G_for_JETSON_NANO/ https://www.waveshare.net/w/upload/6/64/SIM7600X_4G_for_JETSON_NANO.tar.gz
+cd ~/Documents/SIM7600X_4G_for_JETSON_NANO/
+tar -xvf SIM7600X_4G_for_JETSON_NANO.tar.gz
+sudo pip3 install Jetson.GPIO
+```
+
+
+
+### minicom调试
+
+```bash
+sudo minicom -D /dev/ttyUSB2 
+crtl + a z e 
+```
+
+
+
+### 配置上网
+
+**NDIS驱动上网**
+
+```bash
+# 强制设置为4G上网
+AT+CNMP=38
+# 查询网络质量
+AT+CSQ
+# 查询网络注册状
+AT+CREG?
+# 查询网络运营商
+AT+COPS?
+# 查询网络波段
+AT+CPSI?
+```
+
+编译文件 make
+
+```bash
+insmod simcom_wwan.ko
+lsmod
+# 启动网口
+ifconfig wwan0 up
+
+# 拨号
+minicom -D /dev/ttyUSB2
+AT$QCRMCALL=1,1
+
+# 分配ip
+apt-get install udhcpc
+udhcpc -i wwan0
+ping -I wwan0 www.baidu.com
+```
+
+
+
+### 发送英文短信
+
+```bash
+AT+CMGF=1
+AT+CSCS="GSM"
+AT+CSCA?
+AT+CSMP=17,167,0,240  # 240显示在终端，241保存在sim卡
+AT+CMGS="18890...."
+> MESSAGE CONTENT.
+CTRL-Z # 发送
+```
+
+
+
+### 查看信息
+
+```bash
+AT+CMGL="ALL"
+```
+
+
+
+### 发送中文短信
+
+```bash
+AT+CMGF=1
+AT+CSCS="UCS2"
+AT+CSCA?
+AT+CSMP=17,128,2,25
+AT+CMGS="00310038003800390030003500370032003700300030"
+> UCS2编码的消息内容，使用转换工具
+> 5B8951685E3D6D4B8BD50074006500730074
+
+CTRL-Z
+```
+
