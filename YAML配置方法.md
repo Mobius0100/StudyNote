@@ -35,6 +35,11 @@
 
 **导入** import yaml
 
+```python
+with open('filename', 'r') as stream:
+  config = yaml.safe_load(stream)
+```
+
 ```yaml
 # 注释：list嵌套dict
 

@@ -176,6 +176,8 @@ AT+CPSI?
 编译文件 make
 
 ```bash
+# NDIS拨号上网
+# root执行
 insmod simcom_wwan.ko
 lsmod
 # 启动网口
@@ -189,6 +191,14 @@ AT$QCRMCALL=1,1
 apt-get install udhcpc
 udhcpc -i wwan0
 ping -I wwan0 www.baidu.com
+
+# RNDIS拨号上网
+AT+CUSBPIDSWITCH=9011,1,1
+# ifconfig 识别出usb1
+sudo dhclient -v usb1
+ping -I usb1 www.baidu.com
+# 若不能上网
+sudo route add -net 0.0.0.0 usb1
 ```
 
 
