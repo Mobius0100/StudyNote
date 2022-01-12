@@ -55,9 +55,9 @@ a =tkinter.filedialog.askopenfiles()#多个文件流对象
 print(a)
 ```
 
-
 \---------------------
 作者：DeardeerU
 来源：CSDN
 原文：https://blog.csdn.net/Bugest/article/details/81557112
 版权声明：本文为博主原创文章，转载请附上博文链接！
+

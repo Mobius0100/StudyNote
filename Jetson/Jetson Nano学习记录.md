@@ -239,3 +239,17 @@ AT+CMGS="00310038003800390030003500370032003700300030"
 CTRL-Z
 ```
 
+
+
+## 安装VScode
+
+https://code.visualstudio.com/Download下载arm64 deb
+
+```bash
+sudo dpkg -i download.deb
+sudo apt install apt-transport-https
+sudo apt update
+sudo apt install code
+code --version
+```
+
