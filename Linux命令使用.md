@@ -48,3 +48,29 @@ sudo dpkg --configure -a
 sudo apt-get -f install
 ```
 
+
+
+# Ubuntu图形化界面问题
+
+**问题1：**进入LDXE界面黑屏，需要输入密码，可以进入登录界面，**通过更改图形界面解决**
+
+**问题2：**同上，但因不需要输入密码，不能进入登录界面，**通过更改显示管理器解决**
+
+======但图形界面和登录界面无法工作的原因未知======
+
+
+
+所有图形化会话位置：/usr/share/xsessions
+
+显示管理器：DM(display manager)
+
+简单来说， 显示管理器 (display manager) （DM）是一个为你的Linux发行版提供**图形登录功能**的程序。它控制用户会话并管理用户认证。显示管理器会在你输入用户名和密码后，立即启动显示服务器并加载桌面环境。
+
+我们平时打开linux时的那个登录界面，就是显示管理器。gdm3就是gnome桌面环境使用的显示管理器，同样KDE使用的是sddm。开启linux时会先启动并进入显示管理器，也就是用户登录界面。然后我们在其中输入用户名和密码，就进入了桌面环境。
+
+```bash
+sudo apt install lightdm lightdm-gtk-greeter-settings  # 安装lightdm
+sudo dpkg-reconfigure lightdm # 配置默认显示管理器
+cat /etc/X11/default-display-manager # 查看默认显示管理器
+```
+
