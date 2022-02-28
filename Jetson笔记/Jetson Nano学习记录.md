@@ -253,3 +253,58 @@ sudo apt install code
 code --version
 ```
 
+
+
+# 安装VNC
+
+引用：https://blog.csdn.net/weixin_43181350/article/details/106491056
+
+`sudo apt-get install vino-server`
+
+## 解决桌面共享打开闪退
+
+```bash
+#编辑
+sudo gedit /usr/share/glib-2.0/schemas/org.gnome.Vino.gschema.xml
+
+#copy在</schema>上，注意格式对齐:
+<key name='enabled' type='b'>
+      <summary>Enable remote access to the desktop</summary>
+      <description>
+        If true, allows remote access to the desktop via the RFB
+        protocol. Users on remote machines may then connect to the
+        desktop using a VNC viewer.
+      </description>
+      <default>false</default>
+    </key>
+
+#编译
+sudo glib-compile-schemas /usr/share/glib-2.0/schemas
+
+#可以开启设置界面-桌面共享
+#进入修改密码即可
+```
+
+
+
+## 启动脚本
+
+```bash
+sudo gedit ~/openvino
+
+#copy & save
+#!/bin/bash
+export DISPLAY=:0
+gsettings set org.gnome.Vino enabled true
+gsettings set org.gnome.Vino prompt-enabled false
+gsettings set org.gnome.Vino require-encryption false
+xrandr --fb 1280x1024
+/usr/lib/vino/vino-server &
+
+#添加执行权限
+sudo chmod +x ~/openvino
+
+#将该脚本添加至 启动应用程序 实现开机自启
+
+#VNC客户端进行连接
+```
