@@ -255,13 +255,13 @@ code --version
 
 
 
-# 安装VNC
+## 安装VNC
 
 引用：https://blog.csdn.net/weixin_43181350/article/details/106491056
 
 `sudo apt-get install vino-server`
 
-## 解决桌面共享打开闪退
+### 解决桌面共享打开闪退
 
 ```bash
 #编辑
@@ -287,7 +287,7 @@ sudo glib-compile-schemas /usr/share/glib-2.0/schemas
 
 
 
-## 启动脚本
+### 启动脚本
 
 ```bash
 sudo gedit ~/openvino
